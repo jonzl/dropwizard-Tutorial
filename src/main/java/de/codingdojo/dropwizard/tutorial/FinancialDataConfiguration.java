@@ -6,9 +6,9 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
+public class FinancialDataConfiguration extends Application<FinanceConfiguration> {
     public static void main(String[] args) throws Exception {
-        new HelloWorldApplication().run(args);
+        new FinancialDataConfiguration().run(args);
     }
 
     @Override
@@ -17,12 +17,12 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     }
 
     @Override
-    public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap) {
+    public void initialize(Bootstrap<FinanceConfiguration> bootstrap) {
         // nothing to do yet
     }
 
     @Override
-    public void run(HelloWorldConfiguration configuration,
+    public void run(FinanceConfiguration configuration,
                     Environment environment) {
         final HelloWorldResource resource = new HelloWorldResource(
                 configuration.getTemplate(),

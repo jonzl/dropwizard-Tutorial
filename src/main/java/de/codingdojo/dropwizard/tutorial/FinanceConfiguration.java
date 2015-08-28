@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  */
-public class HelloWorldConfiguration extends Configuration {
+public class FinanceConfiguration extends Configuration {
     @NotEmpty
     private String template;
 

@@ -11,17 +11,9 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
-
-    private final HibernateBundle<HelloWorldConfiguration> hibernate = new HibernateBundle<HelloWorldConfiguration>(Stock.class) {
-
-        public DataSourceFactory getDataSourceFactory(HelloWorldConfiguration configuration) {
-            return configuration.getDataSourceFactory();
-        }
-    };
-
+public class FinancialDataApplication extends Application<FinanceConfiguration> {
     public static void main(String[] args) throws Exception {
-        new HelloWorldApplication().run(args);
+        new FinancialDataApplication().run(args);
     }
 
     @Override
@@ -35,7 +27,7 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     }
 
     @Override
-    public void run(HelloWorldConfiguration configuration,
+    public void run(FinanceConfiguration configuration,
                     Environment environment) {
         final HelloWorldResource resource = new HelloWorldResource(
                 configuration.getTemplate(),

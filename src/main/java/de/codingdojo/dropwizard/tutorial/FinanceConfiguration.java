@@ -11,8 +11,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  */
-public class HelloWorldConfiguration extends Configuration {
-
+public class FinanceConfiguration extends Configuration {
     @NotEmpty
     private String template;
 

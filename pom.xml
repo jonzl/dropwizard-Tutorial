@@ -96,7 +96,7 @@
         </plugins>
     </build>
     <scm>
-        <developerConnection>scm:git:https://jonzl@github.com/jonzl/dropwizard-Tutorial.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:jonzl/dropwizard-Tutorial.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 </project>

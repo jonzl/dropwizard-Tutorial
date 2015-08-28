@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.codingdojo.dropwizard</groupId>
-    <artifactId>tutorial</artifactId>
+    <artifactId>financemicroservice</artifactId>
     <version>1.1-SNAPSHOT</version>
     <properties>
         <dropwizard.version>0.8.3</dropwizard.version>

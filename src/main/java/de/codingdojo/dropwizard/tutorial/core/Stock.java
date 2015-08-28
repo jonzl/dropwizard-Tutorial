@@ -2,10 +2,42 @@ package de.codingdojo.dropwizard.tutorial.core;
 
 public class Stock {
 
+   public Stock(){
+
+    }
+
     private long id;
 
     private String isin;
 
+    private String symbol;
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private double price;
+    private String type;
     private String name;
 
     public long getId() {

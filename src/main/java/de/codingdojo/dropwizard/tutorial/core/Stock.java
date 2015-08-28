@@ -1,5 +1,7 @@
 package de.codingdojo.dropwizard.tutorial.core;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Stock {
 
    public Stock(){
@@ -12,6 +14,7 @@ public class Stock {
 
     private String symbol;
 
+    @JsonProperty
     public String getSymbol() {
         return symbol;
     }
@@ -19,7 +22,7 @@ public class Stock {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-
+    @JsonProperty
     public double getPrice() {
         return price;
     }
@@ -28,6 +31,7 @@ public class Stock {
         this.price = price;
     }
 
+    @JsonProperty
     public String getType() {
         return type;
     }
@@ -56,6 +60,7 @@ public class Stock {
         this.isin = isin;
     }
 
+    @JsonProperty
     public String getName() {
         return name;
     }

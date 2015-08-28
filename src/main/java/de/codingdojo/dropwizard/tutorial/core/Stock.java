@@ -8,7 +8,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "de.codingdojo.dropwizard.tutorial.core.Stock.findAll",
-                query = "SELECT s FROM Stock s"
+                query = "select s from Stock s"
         )
 })
 public class Stock {

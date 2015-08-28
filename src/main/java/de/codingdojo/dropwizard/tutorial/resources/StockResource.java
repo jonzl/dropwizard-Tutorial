@@ -1,15 +1,13 @@
 package de.codingdojo.dropwizard.tutorial.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.base.Optional;
 import de.codingdojo.dropwizard.tutorial.core.Stock;
 import de.codingdojo.dropwizard.tutorial.db.StockDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.params.LongParam;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -26,8 +24,13 @@ public class StockResource {
     @GET
     @Timed
     @UnitOfWork
+    @Path("/{id}")
     public Stock findStock(@PathParam("id") LongParam id) {
-        return dao.findById(id.get());
+        final Optional<Stock> stock = dao.findById(id.get());
+        if (!stock.isPresent()) {
+            throw new NotFoundException("No such stock.");
+        }
+        return stock.get();
     }
 
     @GET
@@ -36,6 +39,13 @@ public class StockResource {
     @Path("/all")
     public List<Stock> getAllStocks() {
         return dao.findAll();
+    }
+
+    @POST
+    @Timed
+    @UnitOfWork
+    public Stock createStock(Stock stock) {
+        return dao.create(stock);
     }
 
 }

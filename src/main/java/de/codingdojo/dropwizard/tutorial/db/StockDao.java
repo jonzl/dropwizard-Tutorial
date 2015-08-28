@@ -21,7 +21,7 @@ public class StockDao extends AbstractDAO<Stock> {
     }
 
     public List<Stock> findAll() {
-        return list(namedQuery("de.codingdojo.dropwizard.core.Stock.findAll"));
+        return list(namedQuery("de.codingdojo.dropwizard.tutorial.core.Stock.findAll"));
     }
 
 }

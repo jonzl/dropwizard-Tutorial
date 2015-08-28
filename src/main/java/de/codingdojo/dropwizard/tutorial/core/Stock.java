@@ -1,10 +1,24 @@
 package de.codingdojo.dropwizard.tutorial.core;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+
+@Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "de.codingdojo.dropwizard.tutorial.core.Stock.findAll",
+                query = "SELECT s FROM Stock s"
+        )
+})
 public class Stock {
 
+    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String isin;
+//    @Column(name = "fullName", nullable = false)
+    private String symbol;
 
     private String name;
 
@@ -16,12 +30,12 @@ public class Stock {
         this.id = id;
     }
 
-    public String getIsin() {
-        return isin;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setIsin(String isin) {
-        this.isin = isin;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public String getName() {

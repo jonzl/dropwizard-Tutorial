@@ -49,7 +49,7 @@ public class FinancialDataApplication extends Application<FinanceConfiguration> 
         environment.jersey().register(resource);
 
         final StockDao dao = new StockDao(hibernate.getSessionFactory());
-        environment.jersey().register(new StockResource(dao.findById(1l)));
+        environment.jersey().register(new StockResource(dao));
     }
 
 }

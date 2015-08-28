@@ -12,6 +12,13 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class FinancialDataApplication extends Application<FinanceConfiguration> {
+
+    private final HibernateBundle<FinanceConfiguration> hibernate = new HibernateBundle<FinanceConfiguration>(Stock.class) {
+        public DataSourceFactory getDataSourceFactory(FinanceConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
+
     public static void main(String[] args) throws Exception {
         new FinancialDataApplication().run(args);
     }
@@ -22,7 +29,7 @@ public class FinancialDataApplication extends Application<FinanceConfiguration> 
     }
 
     @Override
-    public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap) {
+    public void initialize(Bootstrap<FinanceConfiguration> bootstrap) {
         bootstrap.addBundle(hibernate);
     }
 

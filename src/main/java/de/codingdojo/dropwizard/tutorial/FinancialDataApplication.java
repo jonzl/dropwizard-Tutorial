@@ -6,9 +6,9 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-public class FinancialDataConfiguration extends Application<FinanceConfiguration> {
+public class FinancialDataApplication extends Application<FinanceConfiguration> {
     public static void main(String[] args) throws Exception {
-        new FinancialDataConfiguration().run(args);
+        new FinancialDataApplication().run(args);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package de.codingdojo.dropwizard.tutorial;
 
-import de.codingdojo.dropwizard.tutorial.core.json.Stock;
+import de.codingdojo.dropwizard.tutorial.core.StockEntity;
 import de.codingdojo.dropwizard.tutorial.db.StockDao;
 import de.codingdojo.dropwizard.tutorial.health.TemplateHealthCheck;
 import de.codingdojo.dropwizard.tutorial.resources.HelloWorldResource;
@@ -14,7 +14,7 @@ import io.dropwizard.setup.Environment;
 
 public class FinancialDataApplication extends Application<FinanceConfiguration> {
 
-    private final HibernateBundle<FinanceConfiguration> hibernate = new HibernateBundle<FinanceConfiguration>(Stock.class) {
+    private final HibernateBundle<FinanceConfiguration> hibernate = new HibernateBundle<FinanceConfiguration>(StockEntity.class) {
         public DataSourceFactory getDataSourceFactory(FinanceConfiguration configuration) {
             return configuration.getDataSourceFactory();
         }

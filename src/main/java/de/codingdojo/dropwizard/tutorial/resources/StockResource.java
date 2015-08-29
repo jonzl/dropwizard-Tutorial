@@ -5,7 +5,7 @@ import com.google.common.base.Optional;
 import de.codingdojo.dropwizard.tutorial.db.StockDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.params.LongParam;
-import de.codingdojo.dropwizard.tutorial.core.json.Stock;
+import de.codingdojo.dropwizard.tutorial.core.StockEntity;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,8 +25,8 @@ public class StockResource {
     @Timed
     @UnitOfWork
     @Path("/{id}")
-    public Stock findStock(@PathParam("id") LongParam id) {
-        final Optional<Stock> stock = dao.findById(id.get());
+    public StockEntity findStock(@PathParam("id") LongParam id) {
+        final Optional<StockEntity> stock = dao.findById(id.get());
         if (!stock.isPresent()) {
             throw new NotFoundException("No such stock.");
         }
@@ -37,14 +37,14 @@ public class StockResource {
     @Timed
     @UnitOfWork
     @Path("/all")
-    public List<Stock> getAllStocks() {
+    public List<StockEntity> getAllStocks() {
         return dao.findAll();
     }
 
     @POST
     @Timed
     @UnitOfWork
-    public Stock createStock(Stock stock) {
+    public StockEntity createStock(StockEntity stock) {
         return dao.create(stock);
     }
 

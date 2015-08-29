@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Stock")
 @NamedQueries({
         @NamedQuery(
-                name = "de.codingdojo.dropwizard.tutorial.core.Stock.findAll",
-                query = "select s from Stock s"
+                name = "de.codingdojo.dropwizard.tutorial.core.StockEntity.findAll",
+                query = "select s from StockEntity s"
         )
 })
 public class StockEntity {

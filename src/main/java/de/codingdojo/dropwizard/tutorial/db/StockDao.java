@@ -1,28 +1,28 @@
 package de.codingdojo.dropwizard.tutorial.db;
 
-import de.codingdojo.dropwizard.tutorial.core.json.Stock;
+import de.codingdojo.dropwizard.tutorial.core.StockEntity;
 import com.google.common.base.Optional;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class StockDao extends AbstractDAO<Stock> {
+public class StockDao extends AbstractDAO<StockEntity> {
 
     public StockDao(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 
-    public Optional<Stock> findById(Long id) {
+    public Optional<StockEntity> findById(Long id) {
         return Optional.fromNullable(get(id));
     }
 
-    public Stock create(Stock stock) {
+    public StockEntity create(StockEntity stock) {
         return persist(stock);
     }
 
-    public List<Stock> findAll() {
-        return list(namedQuery("de.codingdojo.dropwizard.tutorial.core.Stock.findAll"));
+    public List<StockEntity> findAll() {
+        return list(namedQuery("de.codingdojo.dropwizard.tutorial.core.StockEntity.findAll"));
     }
 
 }

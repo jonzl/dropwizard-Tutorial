@@ -16,7 +16,7 @@ database:
 
   # the JDBC URL
   # url: jdbc:h2:./target/example
-  url: jdbc:postgresql://localhost/yahoo-finance
+  url: jdbc:postgresql://localhost/yahoofinance
 
   # any properties specific to your JDBC driver:
   properties:

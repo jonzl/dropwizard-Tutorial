@@ -1,6 +1,6 @@
 package de.codingdojo.dropwizard.tutorial.resources;
 
-import de.codingdojo.dropwizard.tutorial.core.Stock;
+import de.codingdojo.dropwizard.tutorial.core.json.Stock;
 
 /**
  * @author Harm Norden, Cofinpro AG

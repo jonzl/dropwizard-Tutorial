@@ -1,11 +1,14 @@
 package de.codingdojo.dropwizard.tutorial.resources;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.codingdojo.dropwizard.tutorial.core.Stock;
+import de.codingdojo.dropwizard.tutorial.core.json.JsonStock;
+import de.codingdojo.dropwizard.tutorial.core.json.Resource;
+import de.codingdojo.dropwizard.tutorial.core.json.Stock;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.LinkedHashMap;
 
 public class HttpRequest {
 
@@ -28,7 +31,7 @@ public class HttpRequest {
         System.out.println("\nSending 'GET' request to URL : " + url);
         System.out.println("Response Code : " + responseCode);
 
-              Stock stock = mapper.readValue(new InputStreamReader(con.getInputStream()),Stock.class);
+        Stock stock= mapper.readValue(new InputStreamReader(con.getInputStream()), JsonStock.class).getStockBySymbol(symbol);
         return stock;
     }
 

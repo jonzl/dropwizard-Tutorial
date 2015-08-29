@@ -2,7 +2,7 @@ package de.codingdojo.dropwizard.tutorial.resources;
 
 
 import com.codahale.metrics.annotation.Timed;
-import de.codingdojo.dropwizard.tutorial.core.Stock;
+import de.codingdojo.dropwizard.tutorial.core.json.Stock;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

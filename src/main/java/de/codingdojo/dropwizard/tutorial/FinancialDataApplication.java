@@ -1,11 +1,16 @@
 package de.codingdojo.dropwizard.tutorial;
 
+import de.codingdojo.dropwizard.tutorial.core.SimpleAuthenticator;
 import de.codingdojo.dropwizard.tutorial.core.Stock;
+import de.codingdojo.dropwizard.tutorial.core.User;
 import de.codingdojo.dropwizard.tutorial.db.StockDao;
 import de.codingdojo.dropwizard.tutorial.health.TemplateHealthCheck;
+import de.codingdojo.dropwizard.tutorial.resources.AuthResource;
 import de.codingdojo.dropwizard.tutorial.resources.HelloWorldResource;
 import de.codingdojo.dropwizard.tutorial.resources.StockResource;
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthFactory;
+import io.dropwizard.auth.basic.BasicAuthFactory;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -51,14 +56,25 @@ public class FinancialDataApplication extends Application<FinanceConfiguration> 
         );
         environment.jersey().register(resource);
 
-
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
-        environment.jersey().register(resource);
 
         final StockDao dao = new StockDao(hibernate.getSessionFactory());
         environment.jersey().register(new StockResource(dao));
+
+
+
+        environment.jersey().register(new AuthResource());
+
+        environment.jersey().register(AuthFactory.binder(
+                        new BasicAuthFactory<User>(
+                                new SimpleAuthenticator(),
+                                "SUPER SECRET STUFF",
+                                User.class)
+                )
+        );
+
     }
 
 }

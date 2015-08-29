@@ -1,6 +1,6 @@
 package de.codingdojo.dropwizard.tutorial;
 
-import de.codingdojo.dropwizard.tutorial.core.Stock;
+import de.codingdojo.dropwizard.tutorial.core.json.Stock;
 import de.codingdojo.dropwizard.tutorial.db.StockDao;
 import de.codingdojo.dropwizard.tutorial.health.TemplateHealthCheck;
 import de.codingdojo.dropwizard.tutorial.resources.HelloWorldResource;

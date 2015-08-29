@@ -1,6 +1,6 @@
 package de.codingdojo.dropwizard.tutorial.db;
 
-import de.codingdojo.dropwizard.tutorial.core.Stock;
+import de.codingdojo.dropwizard.tutorial.core.json.Stock;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.SessionFactory;
 

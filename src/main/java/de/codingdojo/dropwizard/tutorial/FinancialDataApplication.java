@@ -8,12 +8,19 @@ import de.codingdojo.dropwizard.tutorial.resources.StockResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class FinancialDataApplication extends Application<FinanceConfiguration> {
 
     private final HibernateBundle<FinanceConfiguration> hibernate = new HibernateBundle<FinanceConfiguration>(Stock.class) {
+        public DataSourceFactory getDataSourceFactory(FinanceConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
+
+    private final MigrationsBundle<FinanceConfiguration> liquibase = new MigrationsBundle<FinanceConfiguration>() {
         public DataSourceFactory getDataSourceFactory(FinanceConfiguration configuration) {
             return configuration.getDataSourceFactory();
         }
@@ -31,11 +38,13 @@ public class FinancialDataApplication extends Application<FinanceConfiguration> 
     @Override
     public void initialize(Bootstrap<FinanceConfiguration> bootstrap) {
         bootstrap.addBundle(hibernate);
+        bootstrap.addBundle(liquibase);
     }
 
     @Override
     public void run(FinanceConfiguration configuration,
                     Environment environment) {
+
         final HelloWorldResource resource = new HelloWorldResource(
                 configuration.getTemplate(),
                 configuration.getDefaultName()
@@ -49,7 +58,7 @@ public class FinancialDataApplication extends Application<FinanceConfiguration> 
         environment.jersey().register(resource);
 
         final StockDao dao = new StockDao(hibernate.getSessionFactory());
-        environment.jersey().register(new StockResource(dao.findById(1l)));
+        environment.jersey().register(new StockResource(dao));
     }
 
 }

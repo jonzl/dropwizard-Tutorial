@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 /**
  */
 public class FinanceConfiguration extends Configuration {
+
     @NotEmpty
     private String template;
 
@@ -27,7 +28,6 @@ public class FinanceConfiguration extends Configuration {
         return template;
     }
 
-    @JsonProperty
     public void setTemplate(String template) {
         this.template = template;
     }
@@ -37,7 +37,6 @@ public class FinanceConfiguration extends Configuration {
         return defaultName;
     }
 
-    @JsonProperty
     public void setDefaultName(String name) {
         this.defaultName = name;
     }
@@ -47,7 +46,6 @@ public class FinanceConfiguration extends Configuration {
         return database;
     }
 
-    @JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
         this.database = dataSourceFactory;
     }

@@ -8,11 +8,11 @@ database:
   # driverClass: org.h2.Driver
   driverClass: org.postgresql.Driver
 
-#  # the username
-#  user: sa
-#
-#  # the password
-#  password: sa
+  # the username
+  user: dropwizard
+
+  # the password
+  password: dw
 
   # the JDBC URL
   # url: jdbc:h2:./target/example

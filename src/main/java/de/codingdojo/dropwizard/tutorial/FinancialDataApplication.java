@@ -5,6 +5,7 @@ import de.codingdojo.dropwizard.tutorial.db.StockDao;
 import de.codingdojo.dropwizard.tutorial.health.TemplateHealthCheck;
 import de.codingdojo.dropwizard.tutorial.resources.HelloWorldResource;
 import de.codingdojo.dropwizard.tutorial.resources.StockResource;
+import de.codingdojo.dropwizard.tutorial.resources.YahooFinanceResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -51,7 +52,10 @@ public class FinancialDataApplication extends Application<FinanceConfiguration> 
         );
         environment.jersey().register(resource);
 
-
+        final YahooFinanceResource yahooFinanceResource = new YahooFinanceResource(
+                configuration.getTemplate()
+        );
+        environment.jersey().register(yahooFinanceResource);
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);

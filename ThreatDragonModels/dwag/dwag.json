@@ -1,0 +1,22 @@
+{
+  "summary": {
+    "title": "dwag",
+    "owner": "dwa",
+    "description": "dwa"
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "dwa"
+      }
+    ],
+    "diagrams": [
+      {
+        "title": "yolo",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ],
+    "reviewer": "dwa"
+  }
+}
